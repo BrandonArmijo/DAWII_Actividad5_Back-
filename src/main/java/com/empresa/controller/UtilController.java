@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.empresa.entity.Deporte;
 import com.empresa.service.DeporteService;
+import com.empresa.entity.Ciclo;
+import com.empresa.service.CicloService;
+import com.empresa.entity.Usuario;
+import com.empresa.service.UsuarioService;
 
 @RestController
 @RequestMapping("/rest/util")
@@ -20,12 +24,50 @@ public class UtilController {
 
 	@Autowired
 	private DeporteService  deporteService;
-
+	
+	@Autowired
+	private CicloService cicloService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
+	
 	@GetMapping("/deporte")
 	@ResponseBody
 	public ResponseEntity<List<Deporte>> listaDeporte(){
 		List<Deporte> lista = deporteService.listaDeporte();
 		return ResponseEntity.ok(lista);
 	}
+	
+	
+	@GetMapping("/ciclo")
+	@ResponseBody
+	public ResponseEntity<List<Ciclo>> listaCiclo(){
+		List<Ciclo> lista = cicloService.listaCiclo();
+		return ResponseEntity.ok(lista);
+	}
+	
+	
+	@GetMapping("/usuario")
+	@ResponseBody
+	public ResponseEntity<List<Usuario>> listaUsuario(){
+		List<Usuario> lista = usuarioService.listaUsuario();
+		return ResponseEntity.ok(lista);
+	}
+	
+	/*@GetMapping("/listaCiclos")
+	@ResponseBody
+	public List<String> listaCiclos() {
+		return cicloService.listaCiclos();
+	}
+	
+	@GetMapping("/listaUsuarios")
+	@ResponseBody
+	public List<String> listaUsuarios() {
+		return usuarioService.listaUsuarios();
+	}
+	*/
+	
+
+	
 	
 }
